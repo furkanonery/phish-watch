@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.controllers import user
+from app.views import user
 from app.database import Base, engine
 
 app = FastAPI()
