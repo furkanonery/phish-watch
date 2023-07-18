@@ -1,32 +1,36 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 class PhishDataBase(BaseModel):
-    identifier: str
-    phish_url: str
-    submitted_by: str
-    is_valid: str
-    is_online: str
+    phish_id: str
+    url: str
+    verified: str
+    online: str
+    submission_time: datetime
+    verification_time: datetime
 
     class Config:
         orm_mode = True
 
 class PhishDataCreate(BaseModel):
-    identifier: str
-    phish_url: str
-    submitted_by: str
-    is_valid: str
-    is_online: str
+    phish_id: str
+    url: str
+    verified: str
+    online: str
+    submission_time: datetime
+    verification_time: datetime
 
     class Config:
         orm_mode = True
 
 class PhishData(BaseModel):
     id: int
-    identifier: str
-    phish_url: str
-    submitted_by: str
-    is_valid: str
-    is_online: str
+    phish_id: str
+    url: str
+    verified: str
+    online: str
+    submission_time: datetime
+    verification_time: datetime
 
     class Config:
         orm_mode = True
