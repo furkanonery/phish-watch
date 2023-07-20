@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - postgres
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000
+  celery_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - postgres
+    command: celery -A celery_config.celery_app worker --loglevel=info
+  celery_beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - postgres
+    command: celery -A celery_config.celery_app beat --loglevel=info
+  redis:
+    image: "redis:latest"
+  postgres:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: "your_postgres_username"
+      POSTGRES_PASSWORD: "your_postgres_password"
+      POSTGRES_DB: "your_postgres_db_name"
