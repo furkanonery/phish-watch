@@ -16,7 +16,7 @@ celery_app = Celery(
 )
 
 celery_app.conf.beat_schedule = {
-    "run_every_twenty_four_hours": {
+    "run_every_six_hours": {
         "task": "phish_tank.get_phish",
         "schedule": timedelta(hours=6),
     },
