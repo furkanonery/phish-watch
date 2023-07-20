@@ -41,4 +41,4 @@ def get_phish():
             except exc.IntegrityError as e:
                 db.rollback()
     else:
-        print("Phishing verileri alınamadı.")
+        print("Failed to retrieve phishing data.")
