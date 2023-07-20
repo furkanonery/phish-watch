@@ -15,7 +15,7 @@ def create_phish_view(phish: PhishDataCreate, db: Session = Depends(get_db)):
 
 @router.get("/phish", response_model=List[PhishData])
 def get_all_phish_view(db: Session = Depends(get_db)):
-    get_phish()
+    
     return get_all_phish_data(db)
 
 @router.get("/phish/{phish_id}", response_model=PhishData)
