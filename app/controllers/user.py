@@ -4,7 +4,7 @@ from app.models.user import User as UserModel
 from typing import List
 from fastapi import HTTPException
 
-def create_user(user: UserCreate, db: Session):
+def create_user(user: UserCreate, db: Session) -> UserModel:
     db_user = UserModel(username=user.username, email=user.email, password=user.password)
     db.add(db_user)
     db.commit()
