@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.schemas.user import UserCreate
-from app.models.user import User as UserModel
+from src.schemas.user import UserCreate
+from src.models.user import User as UserModel
 from typing import List
 from fastapi import HTTPException
 

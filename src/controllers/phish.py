@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.schemas.phish import PhishDataCreate
-from app.models.phish import PhishData as PhishDataModel
+from src.schemas.phish import PhishDataCreate
+from src.models.phish import PhishData as PhishDataModel
 from typing import List
 from fastapi import HTTPException
 from sqlalchemy import exc

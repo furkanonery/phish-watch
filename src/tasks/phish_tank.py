@@ -1,8 +1,17 @@
-from app.models.phish import PhishData as PhishDataModel
-from app.database import get_db
-from sqlalchemy import exc
-from app.utils.fetch_phish import phish_tank_fetch_phishing_data
+import os
+from dotenv import load_dotenv
+load_dotenv()
+PROJECT_PATH = os.getenv("PROJECT_PATH")
+import sys
+sys.path.append(PROJECT_PATH)
 
+from src.models.phish import PhishData as PhishDataModel
+from src.database import get_db
+from sqlalchemy import exc
+from src.utils.fetch_phish import phish_tank_fetch_phishing_data
+from src.tasks.celery_config import celery_app
+
+@celery_app.task
 def get_phish():
 
     phishing_data = phish_tank_fetch_phishing_data()

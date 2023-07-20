@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from app.views import user, phish
-from app.database import Base, engine
+from src.views import user, phish
+from src.database import Base, engine
 
 app = FastAPI()
 
