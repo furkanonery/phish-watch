@@ -37,7 +37,7 @@ Defines a surveillance and monitoring system against phishing attacks.
 
 ### Deploying the project on Docker
 
-2. Build the Docker images using the following command::
+2. Build the Docker images using the following command:
 
     ```
     docker-compose build
