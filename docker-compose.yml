@@ -16,7 +16,7 @@ services:
     depends_on:
       - redis
       - postgres
-    command: celery -A celery_config.celery_app worker --loglevel=info
+    command: sh -c "cd src/tasks && celery -A celery_config.celery_app worker --loglevel=info"
   celery_beat:
     build:
       context: .
@@ -24,12 +24,20 @@ services:
     depends_on:
       - redis
       - postgres
-    command: celery -A celery_config.celery_app beat --loglevel=info
+    command: sh -c "cd src/tasks && celery -A celery_config.celery_app beat --loglevel=info"
   redis:
     image: "redis:latest"
   postgres:
-    image: "postgres:latest"
+    image: postgres:latest
+    container_name: my_postgres_db
+    restart: always
     environment:
-      POSTGRES_USER: "your_postgres_username"
-      POSTGRES_PASSWORD: "your_postgres_password"
-      POSTGRES_DB: "your_postgres_db_name"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: phishGuardDB
+    ports:
+      - "5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

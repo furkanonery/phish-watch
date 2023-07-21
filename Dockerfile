@@ -2,7 +2,7 @@ FROM python:3.10
 
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock /app/
+COPY pyproject.toml poetry.lock README.md .env /app/
 COPY src /app/src
 
 RUN pip3 install --upgrade pip
