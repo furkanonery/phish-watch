@@ -34,3 +34,17 @@ Defines a surveillance and monitoring system against phishing attacks.
     ```
     celery -A celery_config.celery_app beat --loglevel=info
     ```
+
+### Deploying the project on Docker
+
+2. Build the Docker images using the following command::
+
+    ```
+    docker-compose build
+    ```
+
+3. Start the application and services with Docker Compose:
+
+    ```
+    docker-compose up
+    ```
