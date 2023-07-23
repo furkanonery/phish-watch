@@ -9,7 +9,7 @@ from src.models.phish import PhishData as PhishDataModel
 from src.database import get_db
 from sqlalchemy import exc
 from src.utils.fetch_phish import phish_tank_fetch_phishing_data
-from src.tasks.celery_config import celery_app
+from src.tasks.celery_config import celery_app, logger
 
 @celery_app.task
 def get_phish():
@@ -41,4 +41,4 @@ def get_phish():
             except exc.IntegrityError as e:
                 db.rollback()
     else:
-        print("Failed to retrieve phishing data.")
+        logger.info("Failed to retrieve phishing data.")

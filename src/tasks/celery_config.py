@@ -2,6 +2,7 @@ from celery import Celery
 from datetime import timedelta
 import os
 from dotenv import load_dotenv
+from celery.utils.log import get_task_logger
 
 load_dotenv()
 
@@ -23,3 +24,4 @@ celery_app.conf.beat_schedule = {
 }
 
 celery_app.conf.timezone = "UTC"
+logger = get_task_logger(__name__)
