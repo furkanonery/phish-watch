@@ -1,6 +1,12 @@
 # phish-watch
 Defines a surveillance and monitoring system against phishing attacks.
 
+### Endpoints
+1. /users <br />
+2. /users/<pk:user_id> <br />
+3. /phish <br />
+4. /phish/<pk:phish_id>
+
 ### Running the Server
 
 1. Navigate to the `phish-watch` directory:
